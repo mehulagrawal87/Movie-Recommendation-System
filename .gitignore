@@ -1,0 +1,12 @@
+venv
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.virtual_documents/
+
