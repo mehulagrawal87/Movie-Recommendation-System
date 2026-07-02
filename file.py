@@ -227,15 +227,13 @@ movies.reset_index(drop=True, inplace=True)
 
 #similarity = pickle.load(open('similarity.pkl', 'rb'))
 import os
-# pyrefly: ignore [missing-import]
+import pickle
 import gdown
 
-
-FILE_ID = "https://drive.google.com/file/d/1sBde_poOSeRmSMPwffo4zFM_Ti-BVXjc/view?usp=sharing"
+url = "https://drive.google.com/file/d/1sBde_poOSeRmSMPwffo4zFM_Ti-BVXjc/view?usp=sharing"
 OUTPUT = "similarity.pkl"
 
 if not os.path.exists(OUTPUT):
-    url = f"https://drive.google.com/uc?id={FILE_ID}"
     gdown.download(url, OUTPUT, quiet=False)
 
 similarity = pickle.load(open(OUTPUT, "rb"))
