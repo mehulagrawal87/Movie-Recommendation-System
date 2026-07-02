@@ -12,7 +12,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 session = requests.Session()
 #footer
 
-# No horizontal header navigation needed
+
+# No horizontal header navigation needed
 
 
 st.markdown("""
@@ -224,7 +225,20 @@ movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 movies.reset_index(drop=True, inplace=True)
 
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+#similarity = pickle.load(open('similarity.pkl', 'rb'))
+import os
+# pyrefly: ignore [missing-import]
+import gdown
+
+
+FILE_ID = "https://drive.google.com/file/d/1sBde_poOSeRmSMPwffo4zFM_Ti-BVXjc/view?usp=sharing"
+OUTPUT = "similarity.pkl"
+
+if not os.path.exists(OUTPUT):
+    url = f"https://drive.google.com/uc?id={FILE_ID}"
+    gdown.download(url, OUTPUT, quiet=False)
+
+similarity = pickle.load(open(OUTPUT, "rb"))
 print(type(similarity))
 print(similarity.shape)
 
